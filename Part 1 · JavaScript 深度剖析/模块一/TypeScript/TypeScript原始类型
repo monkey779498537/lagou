@@ -1,0 +1,17 @@
+类型
+const a:string = 'foo'
+
+const b:number = 100 // 包括NaN Infinity
+
+const c:boolean = true // false
+
+const n:null = null
+
+const u:undefined = undefined
+
+const s:symbol = Symbol() // targter为 es5时会报错，ES6正常
+
+特殊：
+const b:string = null // 在严格严格模式下会报错，非严格模式没问题
+
+const e:void = undefined // null 空类型   在严格模式下只能是undefined ，非严格模式只能是undefined/null

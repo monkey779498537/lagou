@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src="./dataJson/promiseData.json?cb=fn"></script>
+<script>
+  function ajax(url) {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.responseType = 'json'
+      xhr.onload = function () {
+        if (this.status === 200) {
+          resolve(this.response)
+        } else {
+          reject(new Error(this.statusText))
+        }
+      }
+      xhr.send()
+    })
+  }
+  ajax('./dataJson/promiseData.json?cb=fn').then(function(response) {
+    console.log('resolve: ' + response)
+  },function(err) {
+    console.log('err:' + err)
+  })
+</script>

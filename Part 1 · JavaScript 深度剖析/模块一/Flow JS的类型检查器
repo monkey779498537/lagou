@@ -1,0 +1,7 @@
+Flow：JS的静态类型检查器，一个小工具
+
+类似：
+
+function sum (a:number, b:number) { // 类型注解
+  return a + b
+}

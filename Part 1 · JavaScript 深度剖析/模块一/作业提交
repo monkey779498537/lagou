@@ -1,0 +1,106 @@
+一、简答题
+1.
+  执行结果：10
+  原因：因为i泄露成了全局变量，一直在被累积到循环结束，在a[6]()调用时i已经累积成了10
+
+2.
+  执行结果:tep is undefined
+  原因：if (true){} 让这里形成了一个块级作用域，let声明变量时这时会形成暂时性死区，因为let不会变量声明提升
+
+3.
+  var arr = [12, 34, 32, 89, 4]
+  var minArr = arr.sort(function(a, b) {
+    return a - b
+  })
+  minArr[0]
+
+4.var, let, const 差别：
+  1.var：
+    a.声明一个普通变量;
+    b.会存在声明提升的特性;
+    c.容易泄露成全局变量，容易被污染；
+  2.let：
+    a.ES6新特性增加的内容;
+    b.声明一个变量;
+    c.不会存在声明提升的特性;
+    d.且只在块级作用域能访问到；
+  3.const: 
+    a.EX6新特性增加的内容;
+    b.声明一个常量;
+    c.声明之后内容不允许修改，只能访问使用;
+    d.且也只在块级作用域能访问到；
+
+5.
+  执行结果：obj.fn()  ===>  this.a  ===> 20
+  原因：
+    a.this指向取决于调用执行时候的环境，此时的this被obj所调用并执行；
+    b.箭头函数不会改变this指向；
+    故此时this指向obj对象
+  
+6.Symbol的的用途
+  Symbol是ES6中新增的一种类型，在为对象添加扩展内容的时候，防止原有对象中有内容被覆盖；
+
+7.
+  浅拷贝：复制对象的索引，修改被复制对象或者修改复制对象会修改相互影响
+  深拷贝：
+    a.复制对象的全部内容，包括原型中的所有属性；
+    b.复制出来的内容是一个全新的对象，不会影响到原来对象的内容，不会相互影响。
+
+8.
+  JS异步编程：遇到比如ajax/setTimeout这类宏任务时，会把这类事件处理挂载在堆栈中执行，然后先执行当前同步代码，等待当前同步代码执行完毕后，再执行这类宏任务的回调内容；
+  Event Loop:从堆栈中获取需要被执行的宏任务回调内容，获取到之后先进先出推到执行环境栈中执行；
+  宏任务：比如ajax/setTimeout，在当前同步代码和微任务执行完毕后才最后执行的内容；
+  微任务：比如：Promise对象，当前代码执行完之后就立马执行
+
+9.
+  function fun1 (){
+    return new Promise(function (resolve, reject){
+      setTimeout(function () {
+        var a = 'hello'
+        resolve(a)
+      }, 10)
+    })
+  }
+  function fun2 (a){
+    return new Promise(function (resolve, reject){
+      setTimeout(function () {
+        var b = a + ' lagou'
+        resolve(b)
+      }, 10)
+    })
+  }
+  function fun3 (b){
+    return new Promise(function (resolve, reject){
+      setTimeout(function () {
+        var c = b + ' I ❤ U'
+        resolve(c)
+      }, 10)
+    })
+  }
+
+  fun1().then(function(a) {
+    console.log(`fun1: ${a}`)
+    return fun2(a)
+  }).then(function(b) {
+    console.log(`fun2: ${b}`)
+    return fun3(b)
+  }).then(function(c) {
+    console.log(`fun3: ${c}`)
+  }).catch(function(err) {
+    console.log(new Error(err))
+  })
+
+10.
+  1.TypeScript是基于JavaScript之上的一门语言，因为JS是弱类型，不安全的，TS的出现主要是为了规范JS中因为隐式转换弱类型导致的一些问题，
+  使得代码可以在编译的时候提前报错提示，让JS类型更加明确起来；
+  2.打包编译时可以任意设置需要兼容ES的历史版本
+
+11.TypeScript
+  优点：
+    1.让JS代码更安全可靠，一些类型错误可以在编译的时候就提前爆出来；
+    2.强制性的明确参数类型，便于后续使用维护；
+  缺点：
+    1.需要花很多时间去明确类型；
+    2.上手的学习成本增加
+
+
