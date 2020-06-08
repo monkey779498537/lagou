@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+
+<script>
+  function makePower(power) {
+    return function (num) {
+      return Math.pow(num, power)
+    }
+  }
+
+  var power2 = makePower(2)
+  var power3 = makePower(3)
+
+  console.log(power2(3))
+  console.log(power3(4))
+  
+</script>
+
+</html>
