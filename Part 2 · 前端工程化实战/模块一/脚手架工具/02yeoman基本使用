@@ -1,0 +1,7 @@
+Yeoman：通用性脚手架工具，基于nodeJs开发的工具模块
+
+运行命令发现报错：
+先查找path配置，比如：yarn global bin，然后set PATH,对比两个输出的内容是否后者包含前者
+
+NODE_PATH
+D:\develop\nodejs\node_global\node_modules
