@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<!-- 通过给 script 标签 添加 type="module" 属性，就可以以 EX module 的标准执行其中的JS代码 -->
+<script type="module">
+  console.log('aa')
+</script>
+
+<!-- 1. ESM 自动采用严格模式，忽略 'use strict' -->
+
+<!-- 2.每个 ES module 都是运行在单独的私有作用域中 -->
+<script type="module">
+  var foo = 'a'
+  console.log(foo)
+</script>
+<script type="module">
+  console.log(foo)  // fo is not difend
+</script>
+
+<!-- 3.ESM 是通过 CORS 跨域请求的的方式来请求外部 JS 模块的 -->
+<!-- 也就是说跨域的话，服务器需要能支持CORS的请求内容 -->
+
+<!-- 4.EMS的script标签会延迟执行脚本 -->
+<script src='abc.js'></script>
+<p>需要显示的内容，因为普通模式浏览器是立即执行内容，所以当abc脚本中有阻碍流程的内容(alert)会直接影响到后面页面的渲染</p>
+<!-- 通过type="module" === defer 延迟脚本加载，先渲染页面  <script defer src='abc.js'></script> -->
+<script type="module" src='abc.js'></script>
+<p>此时先渲染再执行脚本</p>
+</html>

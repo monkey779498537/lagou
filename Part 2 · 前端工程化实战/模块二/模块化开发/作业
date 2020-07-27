@@ -1,0 +1,9 @@
+1、Webpack 的构建流程主要有哪些环节？如果可以请尽可能详尽的描述 Webpack 打包的整个过程。
+答：
+   从entry开始，递归解析entry依赖的所有模块module，每找到一个module，根据module.rules里配置的Loader规则进行转换处理，
+   转换完module之后再解析当前module依赖的module，这些module会议entry为单位进行分组为一个chunk，最后webpack将所有chunk
+   转换成文件输出output。
+
+2、Loader 和 Plugin 有哪些不同？请描述一下开发 Loader 和 Plugin 的思路。
+答：loader：主要用于对模块进行编译转移、打包压缩
+   Plugin:主要用于扩展webpack功能，在webpack构建流中注入钩子函数，在webpack.json的plugins数组中去配置
